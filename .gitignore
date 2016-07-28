@@ -1,2 +1,5 @@
 .idea/
 node_modules/
+vuetwo/node_modules/
+demo/node_modules/
+vuetwo/*.tgz

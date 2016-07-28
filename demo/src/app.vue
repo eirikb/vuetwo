@@ -5,6 +5,13 @@
   </div>
 </template>
 
+<style lang="less">
+  div {
+    h1 {
+      color: blue;
+    }
+  }
+</style>
 
 <script type="text/babel">
   import Child from './child.vue';

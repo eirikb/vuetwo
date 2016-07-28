@@ -1,11 +1,15 @@
 {
-  "name": "vuetwo",
+  "name": "vuetwo-test",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "author": "eirikb@eirikb.no",
   "license": "MIT",
+  "scripts": {
+    "start": "concurrently \"vuetwo src/app.js build.js\" \"lite-server\""
+  },
   "devDependencies": {
-    "vue-template-compiler": "2.0.0-beta.5"
+    "concurrently": "2.2.0",
+    "lite-server": "2.2.2",
+    "vuetwo": "http://eirikb.blob.core.windows.net/npm/vuetwo-1.0.0.tgz"
   }
 }

@@ -1,9 +1,25 @@
 <template>
-  <h1>I am child</h1>
+  <div>
+    <p>
+      <b>I am child, {{test}}</b>
+    </p>
+  </div>
 </template>
 
-<style scoped="true">
-  h1 {
-    color: red;
+<style scoped="true" lang="sass">
+  p {
+    b {
+      color: red;
+    }
   }
 </style>
+
+<script>
+  export default {
+    data() {
+      return {
+        test: 'world!'
+      };
+    }
+  }
+</script>
