@@ -4380,12 +4380,10 @@ module.exports = options => {
           }
           document.head.appendChild(style);`;
       }).join('');
-      script = script.replace(/default {/, `default {
+      return script.replace(/default {/, `default {
       _scopeId: '${scopeId}', 
       staticRenderFns: [${staticRenderFns.join(',')}],
       render: function() { ${addStyles}; ${compiled.render} },`);
-      console.log('SCRIPT', script);
-      return script;
     }
   }
 };

@@ -36,8 +36,8 @@ var options = {
     commonjs(),
     babel({
       presets: ['es2015-rollup'],
-      babelrc: false
-        exclude: 'node_modules/**'
+      babelrc: false,
+      exclude: 'node_modules/**'
     }),
     program.minify ? uglify() : {}
   ],
