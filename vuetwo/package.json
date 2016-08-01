@@ -8,6 +8,7 @@
   "bin": "./bin/vuetwo.js",
   "dependencies": {
     "babel-preset-es2015-rollup": "1.1.1",
+    "commander": "2.9.0",
     "de-indent": "1.0.2",
     "entities": "1.1.1",
     "less": "2.7.1",
@@ -17,6 +18,7 @@
     "rollup-plugin-babel": "2.6.1",
     "rollup-plugin-commonjs": "3.3.1",
     "rollup-plugin-node-resolve": "1.7.1",
+    "rollup-plugin-uglify": "1.0.1",
     "rollup-watch": "2.5.0",
     "vue": "2.0.0-beta.5"
   }
