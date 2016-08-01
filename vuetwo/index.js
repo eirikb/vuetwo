@@ -35,7 +35,9 @@ var options = {
     }),
     commonjs(),
     babel({
-      exclude: 'node_modules/**'
+      presets: ['es2015-rollup'],
+      babelrc: false
+        exclude: 'node_modules/**'
     }),
     program.minify ? uglify() : {}
   ],
@@ -45,8 +47,7 @@ var options = {
 if (program.watch) {
   options.dest = program.output;
   watch(rollup, options).on('event', e => console.log(e));
-}
-else {
+} else {
   console.log('Bundling...');
   rollup.rollup(options).then(bundle => {
     console.log('Writing file...');
