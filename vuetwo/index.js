@@ -47,11 +47,11 @@ if (program.watch) {
   watch(rollup, options).on('event', e => console.log(e));
 }
 else {
-  console.log('BUndling...');
+  console.log('Bundling...');
   rollup.rollup(options).then(bundle => {
     console.log('Writing file...');
     bundle.write({
       dest: program.output
     });
-  });
+  }).catch(err => console.log(err));
 }
