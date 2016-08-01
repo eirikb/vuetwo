@@ -4357,8 +4357,8 @@ module.exports = options => {
 
       const sfc = vueCompiler.parseComponent(code);
       const compiled = vueCompiler.compile(sfc.template.content);
-      const template = compiled.render;
-      const script = sfc.script ? sfc.script.content : 'export default {}';
+      const staticRenderFns = compiled.staticRenderFns.map(fn => `function() { ${fn} }`);
+      let script = sfc.script ? sfc.script.content : 'export default {}';
       const scopeId = 'data-v-' + (++c);
       const addStyles = (sfc.styles || []).map(style => {
         let css = style.content;
@@ -4380,7 +4380,12 @@ module.exports = options => {
           }
           document.head.appendChild(style);`;
       }).join('');
-      return script.replace(/default {/, `default { _scopeId: '${scopeId}', render: function() { ${addStyles}; ${template} },`);
+      script = script.replace(/default {/, `default {
+      _scopeId: '${scopeId}', 
+      staticRenderFns: [${staticRenderFns.join(',')}],
+      render: function() { ${addStyles}; ${compiled.render} },`);
+      console.log('SCRIPT', script);
+      return script;
     }
   }
 };
