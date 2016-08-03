@@ -6,6 +6,7 @@ var commonjs = require('rollup-plugin-commonjs');
 var uglify = require('rollup-plugin-uglify');
 var program = require('commander');
 var watch = require('rollup-watch');
+var fs = require('fs');
 
 program.version('0.0.1')
   .option('-w, --watch', 'Watch file for changes')
@@ -25,6 +26,7 @@ if (!program.output) {
 }
 
 var options = {
+  useStrict: false,
   entry: program.input,
   plugins: [
     plugin(),
@@ -43,15 +45,15 @@ var options = {
   ],
 };
 
-
 if (program.watch) {
   options.dest = program.output;
-  watch(rollup, options).on('event', e => console.log(e));
+  watch(rollup, options).on('event', e => { console.log(e) });
 } else {
   console.log('Bundling...');
   rollup.rollup(options).then(bundle => {
     console.log('Writing file...');
     bundle.write({
+      useStrict: false,
       dest: program.output
     });
   }).catch(err => console.log(err));
