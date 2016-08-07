@@ -8,7 +8,7 @@ Script is transpiled with babel 6, style with either css, sass or less.
 ## Install
 
 ```
-$ npm install --save https://github.com/eirikb/vuetwo
+$ npm install --save git+ssh://github.com/eirikb/vuetwo
 ```
 
 ## Usage
