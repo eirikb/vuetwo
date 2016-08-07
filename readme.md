@@ -8,7 +8,7 @@ Script is transpiled with babel 6, style with either css, sass or less.
 ## Install
 
 ```
-$ npm install --save git+ssh://github.com/eirikb/vuetwo
+$ npm install --save https://github.com/eirikb/vuetwo
 ```
 
 ## Usage
@@ -24,11 +24,15 @@ $ npm install --save git+ssh://github.com/eirikb/vuetwo
     $ vuetwo src/app.js build.js -m -w
 ```
 
+----
+
+See [this gist](https://gist.github.com/eirikb/ea54a045e800e2aa3c3b0d5080911075) for demo.
+
 **src/app.js** could look like this:
 
 ```JavaScript
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import App from './App.vue';
 
 new Vue({
   el: '#app',
@@ -39,22 +43,24 @@ new Vue({
 **App.Vue**:
 ```Vue
 <template>
-    <p>Hello, {{test}}!</p>
+    <p> Hello, {{test}}! </p>
 </template>
 
 <script>
   export default {
-    data () {
+    data() {
       return {
-        test: 'world'
-      };
+        test: `world`
+      }
     }
-  };
+  }
 </script>
 
 <style lang="sass">
+  $red: red;
+  
   p {
-      color: red;
+    color: $red;
   }
 </style>
 ```
