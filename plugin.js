@@ -30,7 +30,7 @@ module.exports = options => {
           less.render(css, (e, output) => css = output.css);
         }
         if (style.scoped) {
-          css = `*[${scopeId}] ${css}`;
+          css = css.replace(/ *\{/, `[${scopeId}]{`);
         }
         return `var style = document.createElement('style'); 
           style.type = 'text/css';
