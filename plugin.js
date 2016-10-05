@@ -25,7 +25,10 @@ module.exports = options => {
       const addStyles = (sfc.styles || []).map(style => {
         var css = style.content;
         if (style.lang === 'sass') {
-          css = sass.renderSync({data: css}).css.toString();
+          css = sass.renderSync({
+            data: css,
+            outputStyle: 'compressed'
+          }).css.toString();
         } else if (style.lang === 'less') {
           less.render(css, (e, output) => css = output.css);
         }
