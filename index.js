@@ -6,6 +6,7 @@ var nodeResolve = require('rollup-plugin-node-resolve');
 var commonjs = require('rollup-plugin-commonjs');
 var uglify = require('rollup-plugin-uglify');
 var json = require('rollup-plugin-json');
+var replace = require('rollup-plugin-replace');
 var watch = require('rollup-watch');
 
 module.exports = (input, output, flags) => {
@@ -15,12 +16,11 @@ module.exports = (input, output, flags) => {
     plugins: [
       plugin(),
       json(),
-      nodeResolve({
-        jsnext: true,
-        main: true,
-        browser: true
-      }),
+      nodeResolve(),
       commonjs(),
+      replace({
+        'process.env.NODE_ENV': JSON.stringify('production')
+      }),
       babel({
         presets: ['es2015-rollup'],
         babelrc: false,
@@ -32,7 +32,7 @@ module.exports = (input, output, flags) => {
 
   if (flags.watch) {
     options.dest = output;
-    watch(rollup, options).on('event', e =>  console.log(e));
+    watch(rollup, options).on('event', e => console.log(e));
   }
   else {
     console.log('Bundling...');
